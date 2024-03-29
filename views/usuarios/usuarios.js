@@ -85,6 +85,35 @@ var uno = async (id_usuarios) => {
   });
 };
 
+var unoconDomicilio = () => {
+  var domicilio = document.getElementById("domicilio").value;
+  $.post(ruta + "unoconDomicilio", { domicilio: domicilio }, (usuario) => {
+    usuario = JSON.parse(usuario);
+    if (parseInt(usuario.numero) > 0) {
+      Swal.fire({
+        title: "Usuarios!",
+        text: "Ya existe un usuario con ese domicilio",
+        icon: "error",
+      });
+      document.getElementById("domicilio").value = "";
+    }
+  });
+};
+var unoconTelefono = () => {
+  var telefono = document.getElementById("telefono").value;
+  $.post(ruta + "unoconTelefono", { telefono: telefono }, (usuario) => {
+    usuario = JSON.parse(usuario);
+    if (parseInt(usuario.numero) > 0) {
+      Swal.fire({
+        title: "Usuarios!",
+        text: "Ya existe un usuario con ese telefono",
+        icon: "error",
+      });
+      document.getElementById("telefono").value = "";
+    }
+  });
+};
+
 var eliminar = (id_usuarios) => {
   Swal.fire({
     title: "Usuarios",

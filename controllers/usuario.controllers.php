@@ -24,17 +24,17 @@ switch ($_GET["op"]) {
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
-    case "unoconNombre":
-        $Nombre = $_POST["nombre"];
+    case "unoconDomicilio":
+        $Domicilio = $_POST["domicilio"];
         $datos = array();
-        $datos = $Usuarios->unoconNombre($Nombre);
+        $datos = $Usuarios->unoconDomicilio($Domicilio);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
-    case "unoconApellido":
-        $Apellido = $_POST["apellido"];
+    case "unoconTelefono":
+        $Telefono = $_POST["telefono"];
         $datos = array();
-        $datos = $Usuarios->unoconApellido($Apellido);
+        $datos = $Usuarios->unoconTelefono($Telefono);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
@@ -62,13 +62,20 @@ switch ($_GET["op"]) {
         echo json_encode($datos);
         break;
     /*TODO: Procedimiento para eliminar */
+    case 'eliminar':
+        $id_usuarios = $_POST["id_usuarios"];
+        $datos = array();
+        $datos = $Usuarios->Eliminar($id_usuarios);
+        echo json_encode($datos);
+        break;
+
     case 'login':
         $nombre = $_POST['nombre'];
         $telefono = $_POST['telefono'];
     
         // TODO: Si las variables están vacías regresa con error
         if (empty($nombre) or empty($telefono)) {
-            header("Location:../login.php?op=2");
+            header("Location:../index.php?op=2");
             exit();
         }
     
@@ -77,7 +84,7 @@ switch ($_GET["op"]) {
             $datos = $Usuarios->login($nombre);
             $res = mysqli_fetch_assoc($datos);
         } catch (Throwable $th) {
-            header("Location:../login.php?op=1");
+            header("Location:../index.php?op=1");
             exit();
         }
         // TODO: Control de si existe el registro en la base de datos
@@ -92,16 +99,15 @@ switch ($_GET["op"]) {
                     header("Location:../views/home.php");
                     exit();
                 } else {
-                    header("Location:../login.php?op=1");
+                    header("Location:../index.php?op=1");
                     exit();
                 }
             } else {
-                header("Location:../login.php?op=1");
+                header("Location:../index.php?op=1");
                 exit();
             }
         } catch (Exception $th) {
             echo ($th->getMessage());
         }
         break;
-    
-}    
+    }    

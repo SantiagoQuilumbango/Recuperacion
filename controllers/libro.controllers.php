@@ -58,9 +58,7 @@ switch ($_GET["op"]) {
         echo json_encode($datos);
         break;
     /*TODO: Procedimiento para insertar */
-    case 'login':
-        // Código de login
-        break;
+    
 }
 
 

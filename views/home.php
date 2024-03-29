@@ -1,7 +1,6 @@
 <?php
 require_once('../config/sesiones.php');
-if ($_SESSION['Rol'] == 'ADMINISTRADOR') {
-    $_SESSION['rutas'] = 'Dashboard'
+
 ?>
 
 
@@ -34,13 +33,13 @@ if ($_SESSION['Rol'] == 'ADMINISTRADOR') {
                     <div class="content-wrapper">
                         <!-- Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">RegAsis /</span> <?php echo $_SESSION["rutas"] ?></h4>
+                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proyecto Integrador</span></h4>
                             <iframe name="base" id="base" src="graficos.php" style="border: none;" width="100%" height="1000px"></iframe>
                         </div>
                         <!-- / Content -->
 
                         <!-- Footer -->
-                        <?php require_once('html/footer.php') ?>
+                       
                         <!-- / Footer -->
 
                         <div class="content-backdrop fade"></div>
@@ -58,15 +57,13 @@ if ($_SESSION['Rol'] == 'ADMINISTRADOR') {
 
         <?php include_once('html/scripts.php') ?>
         <!-- Core JS -->
-        <!-- build:js assets/vendor/js/core.js -->
+        <!-- build:js assets/vendor/js/core.js//header('Location:../index.php'); -->
 
     </body>
 
     </html>
 
 <?php
-} else {
-    header('Location:../login.php');
-}
+
 
 ?>

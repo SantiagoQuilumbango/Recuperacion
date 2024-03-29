@@ -57,16 +57,16 @@
                     </div>
                     <div class="form-group">
                         <label for="domicilio">Domicilio</label>
-                        <input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Ingrese el domicilio" required>
+                        <input onfocusout="unoconDomicilio()" type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Ingrese el domicilio" required>
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Ingrese el teléfono" required>
+                        <input onfocusout="unoconTelefono()" type="text" name="telefono" id="telefono" class="form-control" placeholder="Ingrese el teléfono" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="LimpiarCajas()">Cerrar</button>
                 </div>
             </form>
         </div>

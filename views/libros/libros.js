@@ -84,6 +84,7 @@ var uno = async (id_libros) => {
     document.getElementById("categoria").value = libro.categoria;
     document.getElementById("descripcion").value = libro.descripcion;
     document.getElementById("ejemplares").value = libro.ejemplares;
+    
   });
 };
 

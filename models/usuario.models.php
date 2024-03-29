@@ -40,21 +40,21 @@ class Usuarios
         $con->close();
     }
 
-    public function unoconNombre($Nombre)
+    public function unoconDomicilio($Domicilio)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM usuarios WHERE nombre = '$Nombre'";
+        $cadena = "SELECT count(*) as numero FROM usuarios WHERE domicilio = $Domicilio";
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
     }
 
-    public function unoconApellido($ApellidoMaterno)
+    public function unoconTelefono($Telefono)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM usuarios WHERE apellido_materno = '$ApellidoMaterno'";
+        $cadena = "SELECT count(*) as numero FROM usuarios WHERE telefono = $Telefono";
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
@@ -91,7 +91,7 @@ class Usuarios
     try {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT id_usuarios, nombre, apellido_paterno, apellido_materno, telefono FROM Usuarios WHERE nombre='$Nombre'";
+        $cadena = "SELECT id_usuarios, nombre, apellido_paterno, apellido_materno, domicilio, telefono FROM Usuarios WHERE nombre='$Nombre'";
         $datos = mysqli_query($con, $cadena);
         return $datos;
     } catch (Throwable $th) {
@@ -99,6 +99,7 @@ class Usuarios
     }
     $con->close();
 }
+
 
 }
 ?>
