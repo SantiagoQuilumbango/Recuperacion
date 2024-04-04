@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 11:27 PM
+-- Generation Time: Apr 04, 2024 at 04:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bibliotecario`
+--
+
+CREATE TABLE `bibliotecario` (
+  `usuario` varchar(255) NOT NULL,
+  `contrasenia` varchar(255) NOT NULL,
+  `bibliotecario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `bibliotecario`
+--
+
+INSERT INTO `bibliotecario` (`usuario`, `contrasenia`, `bibliotecario_id`) VALUES
+('stalin', '123', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `libros`
 --
 
@@ -34,17 +53,16 @@ CREATE TABLE `libros` (
   `autor` varchar(255) NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
-  `ejemplares` varchar(255) NOT NULL,
-  `imagen` text DEFAULT NULL
+  `ejemplares` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `libros`
 --
 
-INSERT INTO `libros` (`id_libros`, `titulo`, `fecha`, `autor`, `categoria`, `descripcion`, `ejemplares`, `imagen`) VALUES
-(1, 'El alquimista', '10 de agosto de 1988', 'Paulo Coelho', 'Ficción', 'Una novela que narra la historia de Santiago, un joven pastor andaluz que sueña con viajar en busca de un tesoro material y descubre tesoros espirituales a lo largo del camino.', '25', NULL),
-(19, 'Cien años de soledad', '30 de mayo de 1967', 'Gabriel García Márquez', 'Realismo mágico', 'Esta novela sigue la saga de la familia Buendía a lo largo de varias generaciones en el ficticio pueblo de Macondo, explorando temas de soledad, amor, poder y destino.', '30', NULL);
+INSERT INTO `libros` (`id_libros`, `titulo`, `fecha`, `autor`, `categoria`, `descripcion`, `ejemplares`) VALUES
+(1, 'El alquimista', '10 de agosto de 1988', 'Paulo Coelho', 'Ficción', 'Una novela que narra la historia de Santiago, un joven pastor andaluz que sueña con viajar en busca de un tesoro material y descubre tesoros espirituales a lo largo del camino.', '24'),
+(19, 'Cien años de soledad', '30 de mayo de 1967', 'Gabriel García Márquez', 'Realismo mágico', 'Esta novela sigue la saga de la familia Buendía a lo largo de varias generaciones en el ficticio pueblo de Macondo, explorando temas de soledad, amor, poder y destino.', '32');
 
 -- --------------------------------------------------------
 
@@ -57,17 +75,17 @@ CREATE TABLE `prestamos` (
   `id_usuarios` int(11) NOT NULL,
   `id_libros` int(11) NOT NULL,
   `fecha_salida` varchar(255) NOT NULL,
-  `fecha_devolucion` varchar(255) NOT NULL,
-  `imagen` text DEFAULT NULL
+  `fecha_devolucion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `prestamos`
 --
 
-INSERT INTO `prestamos` (`id_prestamos`, `id_usuarios`, `id_libros`, `fecha_salida`, `fecha_devolucion`, `imagen`) VALUES
-(3, 1, 1, '20 de marzo de 2024', '27 de marzo de 2024', ''),
-(22, 4, 1, '19 de marzo de 2024', '29 de marzo de 2024', '');
+INSERT INTO `prestamos` (`id_prestamos`, `id_usuarios`, `id_libros`, `fecha_salida`, `fecha_devolucion`) VALUES
+(3, 1, 1, '20 de marzo de 2024', '27 de marzo de 2024'),
+(22, 4, 1, '19 de marzo de 2024', '30 de marzo de 2024'),
+(32, 3, 19, '28 de marzo de 2024', '16 de abril de 2024');
 
 -- --------------------------------------------------------
 
@@ -98,6 +116,12 @@ INSERT INTO `usuarios` (`id_usuarios`, `nombre`, `apellido_paterno`, `apellido_m
 --
 
 --
+-- Indexes for table `bibliotecario`
+--
+ALTER TABLE `bibliotecario`
+  ADD PRIMARY KEY (`bibliotecario_id`);
+
+--
 -- Indexes for table `libros`
 --
 ALTER TABLE `libros`
@@ -122,22 +146,28 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `bibliotecario`
+--
+ALTER TABLE `bibliotecario`
+  MODIFY `bibliotecario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `id_prestamos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_prestamos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -154,3 +184,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
