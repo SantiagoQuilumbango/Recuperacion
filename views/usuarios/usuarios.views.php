@@ -2,9 +2,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Basic Bootstrap Table -->
 <div class="card">
-    <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#ModalUsuarios">Nuevo Usuario</button>
+    <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#ModalUsuarios">Nuevo Cliente</button>
 
-    <h5 class="card-header">Lista de Usuarios</h5>
+    <h5 class="card-header">Lista de Clientes</h5>
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>
@@ -36,7 +36,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tituloModal">Insertar Usuario</h5>
+                <h5 class="modal-title" id="tituloModal">Insertar Cliente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

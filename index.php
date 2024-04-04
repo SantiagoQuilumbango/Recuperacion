@@ -84,14 +84,14 @@
                             } ?>
                             <div class="mb-3">
     <label for="text" class="form-label">Usuario</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" autofocus />
+    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese su usuario" autofocus />
 </div>
 <div class="mb-3 form-password-toggle">
     <div class="d-flex justify-content-between">
         <label class="form-label" for="text">Contraseña</label>
     </div>
     <div class="input-group input-group-merge">
-        <input type="password" id="telefono" class="form-control" name="telefono" placeholder="*************" aria-describedby="password" />
+        <input type="password" id="contrasenia" class="form-control" name="contrasenia" placeholder="*************" aria-describedby="password" />
         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
     </div>
 </div>

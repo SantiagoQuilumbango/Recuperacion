@@ -86,20 +86,24 @@ class Usuarios
         $con->close();
     }
 
-    public function login($Nombre)
+    
+ 
+
+
+}
+class bibliotecarios
+{
+public function login($usuario)
 {
     try {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT id_usuarios, nombre, apellido_paterno, apellido_materno, domicilio, telefono FROM Usuarios WHERE nombre='$Nombre'";
+        $cadena = "SELECT bibliotecario_id, usuario, contrasenia FROM bibliotecario WHERE usuario='$usuario'";
         $datos = mysqli_query($con, $cadena);
         return $datos;
     } catch (Throwable $th) {
         return $th->getMessage();
     }
     $con->close();
-}
-
-
-}
+}}
 ?>

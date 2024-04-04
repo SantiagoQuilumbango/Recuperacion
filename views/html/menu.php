@@ -68,7 +68,7 @@
     <li class="menu-item">
     <a href="usuarios/usuarios.views.php" target="base" class="menu-link">
             <?php $_SESSION['rutas'] = 'Usuarios'; ?>
-            <div data-i18n="Without navbar">Usuarios</div>
+            <div data-i18n="Without navbar">Clientes</div>
         </a>
        
     </li>

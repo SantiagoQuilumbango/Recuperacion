@@ -11,7 +11,7 @@
                 <tr>
                     <th>#</th>
                     <th>Libro</th>
-                    <th>Usuario</th>
+                    <th>Cliente</th>
                     <th>Fecha Salida</th>
                     <th>Fecha Devolución</th>
                     <th>Acciones</th>
@@ -47,7 +47,7 @@
                         <select name="id_libros" id="id_libros" class="form-control"  required></select>
                     </div>
                     <div class="form-group">
-                        <label for="id_usuarios">Usuario</label>
+                        <label for="id_usuarios">Cliente</label>
                         <select name="id_usuarios" id="id_usuarios" class="form-control"  required></select>
                     </div>
                     <div class="form-group">
