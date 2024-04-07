@@ -22,19 +22,31 @@ switch ($_GET["op"]) {
    
     case 'uno':
         $id_prestamos = $_POST["id_prestamos"];
+        
         $datos = array();
         $datos = $Prestamos->uno($id_prestamos);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
+
+        case 'stock':
+            $id_libro = $_POST["id_libro"];
+            
+            $datos = array();
+            $datos = $Prestamos->selectLibroStock($id_libro);
+            $res = mysqli_fetch_assoc($datos);
+            echo json_encode($res);
+            break;
     /*TODO: Procedimiento para insertar */
     case 'insertar':
         $id_usuarios = $_POST["id_usuarios"];
         $id_libros = $_POST["id_libros"];
         $fechaSalida = $_POST["fecha_salida"];
         $fechaDevolucion = $_POST["fecha_devolucion"];
+        $cantidad = $_POST["cantidad"];
+        $observaciones = $_POST["observaciones"];
         $datos = array();
-        $datos = $Prestamos->Insertar($id_usuarios, $id_libros, $fechaSalida, $fechaDevolucion);
+        $datos = $Prestamos->Insertar($id_usuarios, $id_libros, $fechaSalida, $fechaDevolucion, $cantidad, $observaciones);
         echo json_encode($datos);
         break;
     /*TODO: Procedimiento para actualizar */
@@ -44,8 +56,10 @@ switch ($_GET["op"]) {
         $id_libros = $_POST["id_libros"];
         $fechaSalida = $_POST["fecha_salida"];
         $fechaDevolucion = $_POST["fecha_devolucion"];
+        $cantidad = $_POST["cantidad"];
+        $observaciones = $_POST["observaciones"];
         $datos = array();
-        $datos = $Prestamos->Actualizar($id_prestamos, $id_usuarios, $id_libros, $fechaSalida, $fechaDevolucion);
+        $datos = $Prestamos->Actualizar($id_prestamos, $id_usuarios, $id_libros, $fechaSalida, $fechaDevolucion, $cantidad, $observaciones);
         echo json_encode($datos);
         break;
     /*TODO: Procedimiento para eliminar */

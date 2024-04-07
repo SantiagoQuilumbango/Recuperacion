@@ -24,7 +24,7 @@ class Libros
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM libros";
+        $cadena = "SELECT id_libros, titulo, fecha, autor, categoria, descripcion, (ejemplares - (SELECT sum(cantidad) FROM prestamos WHERE id_libros = L.id_libros and fecha_devolucion = '')) as 'ejemplares' FROM libros L";
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();

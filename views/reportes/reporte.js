@@ -41,16 +41,16 @@ function init() {
   
   });
   
-  var ruta = "../../controllers/prestamo.controllers.php?op=";
+  var ruta = "../../controllers/reporte.controllers.php?op=";
   
   $().ready(() => {
     CargaLista();
   });
   
   var CargaLista = () => {
-    $("#guardar").removeAttr("disabled");
+    
     var html = "";
-    $.get(ruta + "todos", (ListPrestamos) => {
+    $.get(ruta + "reporteLibrosPrestados", (ListPrestamos) => {
       console.log(ListPrestamos);
       ListPrestamos = JSON.parse(ListPrestamos);
       $.each(ListPrestamos, (index, prestamo) => {
@@ -62,9 +62,9 @@ function init() {
               <td>${prestamo.fecha_devolucion}</td>
               <td>${prestamo.cantidad}</td>
               <td>${prestamo.observaciones}</td>
-              <td>
-                <button class='btn btn-primary' onclick='uno(${prestamo.id_prestamos})' data-bs-toggle="modal" data-bs-target="#ModalPrestamos">Editar</button>
-                <button class='btn btn-danger' onclick='eliminar(${prestamo.id_prestamos})'>Eliminar</button>
+             
+                
+                
               `;
       });
       $("#ListaPrestamos").html(html);

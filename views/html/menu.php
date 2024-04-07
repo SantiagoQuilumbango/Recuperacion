@@ -79,10 +79,36 @@
         </a>
        
     </li>
+    <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="Layouts">Reporte</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="reportes/reporte.views.php" target="base" class="menu-link">
+                    <?php $_SESSION['rutas'] = 'Reporte'; ?>
+                    <div data-i18n="Without navbar">Reportes Libros Prestados</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="reportes/reporteLibro.views.php" target="base" class="menu-link">
+                    <?php $_SESSION['rutas'] = 'Reporte'; ?>
+                    <div data-i18n="Without navbar">Reportes Libros </div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="reportes/reporteCliente.views.php" target="base" class="menu-link">
+                    <?php $_SESSION['rutas'] = 'Reporte'; ?>
+                    <div data-i18n="Without navbar">Reportes Clientes </div>
+                </a>
+            </li>
+        </ul>
+    </li>
    
     
 </ul>
-<li class="menu-item">
+    <li class="menu-item">
         <a href="exel/programa1.php" target="base" class="menu-link">
             <?php $_SESSION['rutas'] = 'Exel'; ?>
             <i class="menu-icon tf-icons bx bx-file"></i>

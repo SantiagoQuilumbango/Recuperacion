@@ -5,11 +5,11 @@ require_once('../config/conexion.php');
 class Prestamos
 {
 
-    public function Insertar($id_usuarios, $id_libros, $fecha_salida, $fecha_devolucion)
+    public function Insertar($id_usuarios, $id_libros, $fecha_salida, $fecha_devolucion, $cantidad, $observaciones)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO prestamos (id_usuarios, id_libros, fecha_salida, fecha_devolucion) VALUES ('$id_usuarios', '$id_libros', '$fecha_salida', '$fecha_devolucion')";
+        $cadena = "INSERT INTO prestamos (id_usuarios, id_libros, fecha_salida, fecha_devolucion, cantidad, observaciones) VALUES ('$id_usuarios', '$id_libros', '$fecha_salida', '$fecha_devolucion', $cantidad, '$observaciones')";
         if (mysqli_query($con, $cadena)) {
             $id = mysqli_insert_id($con);
             return 'ok';
@@ -43,13 +43,23 @@ class Prestamos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT Libros.id_libros, Libros.titulo, Usuarios.id_usuarios, Usuarios.nombre, Prestamos.id_prestamos, Prestamos.fecha_salida, Prestamos.fecha_devolucion FROM Prestamos INNER JOIN Usuarios ON Prestamos.id_usuarios = Usuarios.id_usuarios INNER JOIN Libros ON Prestamos.id_libros = Libros.id_libros";
+        $cadena = "SELECT Libros.id_libros, Libros.titulo, Usuarios.id_usuarios, Usuarios.nombre, Prestamos.id_prestamos, Prestamos.fecha_salida, Prestamos.fecha_devolucion, Prestamos.cantidad, Prestamos.observaciones FROM Prestamos INNER JOIN Usuarios ON Prestamos.id_usuarios = Usuarios.id_usuarios INNER JOIN Libros ON Prestamos.id_libros = Libros.id_libros";
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
     }
 
    
+    public function selectLibroStock($id_libro)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        //$cadena = "SELECT prestamos.id:prestamos, libros.titulo, usuarios.nombre, libros.id_libros, usuarios.id_usuarios, Prestamos.fecha_salida, Prestamos.fecha_devolucion FROM Prestamos INNER JOIN Usuarios ON Prestamos.id_usuarios = Usuarios.id_usuarios INNER JOIN Libros ON Prestamos.id_libros = Libros.id_libros WHERE id_prestamos = $id_prestamos";
+        $cadena = "SELECT (ejemplares - (select sum(cantidad) from prestamos where id_libros=$id_libro and fecha_devolucion = ''))  as 'ejemplares' ,titulo FROM libros WHERE id_libros = $id_libro";
+        $datos = mysqli_query($con, $cadena);
+        return $datos;
+        $con->close();
+    }
 
     public function uno($id_prestamos)
     {
@@ -62,11 +72,11 @@ class Prestamos
         $con->close();
     }
 
-    public function Actualizar($id_prestamos, $id_usuarios, $id_libros, $fecha_salida, $fecha_devolucion)
+    public function Actualizar($id_prestamos, $id_usuarios, $id_libros, $fecha_salida, $fecha_devolucion, $cantidad, $observaciones)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "UPDATE prestamos SET id_usuarios = '$id_usuarios', id_libros = '$id_libros', fecha_salida = '$fecha_salida', fecha_devolucion = '$fecha_devolucion' WHERE id_prestamos = $id_prestamos";
+        $cadena = "UPDATE prestamos SET id_usuarios = '$id_usuarios', id_libros = '$id_libros', fecha_salida = '$fecha_salida', fecha_devolucion = '$fecha_devolucion',cantidad=$cantidad, observaciones='$observaciones' WHERE id_prestamos = $id_prestamos";
         if (mysqli_query($con, $cadena)) {
             return 'ok';
         } else {

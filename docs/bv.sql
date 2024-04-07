@@ -1,9 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 04:42 AM
+-- Generation Time: Apr 07, 2024 at 01:13 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -75,17 +73,25 @@ CREATE TABLE `prestamos` (
   `id_usuarios` int(11) NOT NULL,
   `id_libros` int(11) NOT NULL,
   `fecha_salida` varchar(255) NOT NULL,
-  `fecha_devolucion` varchar(255) NOT NULL
+  `fecha_devolucion` varchar(255) NOT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT 1,
+  `observaciones` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `prestamos`
 --
 
-INSERT INTO `prestamos` (`id_prestamos`, `id_usuarios`, `id_libros`, `fecha_salida`, `fecha_devolucion`) VALUES
-(3, 1, 1, '20 de marzo de 2024', '27 de marzo de 2024'),
-(22, 4, 1, '19 de marzo de 2024', '30 de marzo de 2024'),
-(32, 3, 19, '28 de marzo de 2024', '16 de abril de 2024');
+INSERT INTO `prestamos` (`id_prestamos`, `id_usuarios`, `id_libros`, `fecha_salida`, `fecha_devolucion`, `cantidad`, `observaciones`) VALUES
+(3, 1, 1, '20 de marzo de 2024', '27 de marzo de 2024', 1, ''),
+(22, 4, 1, '19 de marzo de 2024', '30 de marzo de 2024', 1, ''),
+(32, 3, 19, '28 de marzo de 2024', '16 de abril de 2024', 1, ''),
+(35, 1, 1, 'a', '', 2, ''),
+(36, 3, 1, 'a', '5/4/2024', 18, 'roto'),
+(37, 1, 1, 'g', '', 2, ''),
+(38, 1, 19, 'g', '', 3, 'bien'),
+(39, 3, 1, '5/4/2024', '5sjs', 10, 'Bueno'),
+(42, 1, 1, '2024-04-10', '2024-04-05', 10, 'Bueno');
 
 -- --------------------------------------------------------
 
@@ -161,7 +167,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT for table `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `id_prestamos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_prestamos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -184,4 +190,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

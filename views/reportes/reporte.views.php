@@ -2,9 +2,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Basic Bootstrap Table -->
 <div class="card">
-    <button type="button" class="btn btn-outline-secondary" onclick="libros(); usuarios()" data-bs-toggle="modal" data-bs-target="#ModalPrestamos">Nuevo Prestamo</button>
+    
 
-    <h5 class="card-header">Lista de Prestamos</h5>
+    <h5 class="card-header">Reporte de Libros Prestados</h5>
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>
@@ -16,7 +16,7 @@
                     <th>Fecha Devolución</th>
                     <th>Cantidad</th>
                     <th>Observaciones</th>
-                    <th>Acciones</th>
+                  
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0" id="ListaPrestamos">
@@ -54,11 +54,11 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_salida">Fecha Salida</label>
-                        <input type="date" name="fecha_salida" id="fecha_salida" class="form-control" placeholder="Ingrese la fecha de salida" required>
+                        <input type="text" name="fecha_salida" id="fecha_salida" class="form-control" placeholder="Ingrese la fecha de salida" required>
                     </div>
                     <div class="form-group">
                         <label for="fecha_devolucion">Fecha Devolución</label>
-                        <input type="date" name="fecha_devolucion" id="fecha_devolucion" class="form-control" placeholder="Ingrese la fecha de devolución" >
+                        <input type="text" name="fecha_devolucion" id="fecha_devolucion" class="form-control" placeholder="Ingrese la fecha de devolución" required>
                     </div>
                     <div class="form-group">
                         <label for="cantidad">Cantidad</label>
@@ -69,10 +69,7 @@
                         <input type="text" id="observaciones" name="observaciones" class="form-control" placeholder="Ingrese la observación del libro" required >
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="guardar" name="guardar" type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="LimpiarCajas()">Cerrar</button>
-                </div>
+                
             </form>
         </div>
     </div>
@@ -80,4 +77,4 @@
 
 <?php require_once('../html/scripts2.php') ?>
 
-<script src="./prestamos.js"></script>
+<script src="./reporte.js"></script>
